@@ -11,6 +11,7 @@ def createMidi(filename, sentence):
 	midi = MIDIFile(1)
 	midi.addTempo(track,time,tempo)
 	for i in sentence:
+		print(i)
 		print(ord(i))
 		midi.addNote(track,channel,ord(i)-10,time, duration, volume);
 		time += 1
