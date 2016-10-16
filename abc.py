@@ -3,18 +3,19 @@
 from midiutil.MidiFile import MIDIFile
 def createMidi(filename, sentence):
 	track = 0
-	channel = 0
+	channel = 1
 	time = 0
-	duration = 1
+	duration = .5
 	tempo = 60
-	volume = 100
+	volume = 0 
 	midi = MIDIFile(1)
 	midi.addTempo(track,time,tempo)
-	for i in sentence:
+	i=0
+	while(i<len(sentence)):
 		print(i)
-		print(ord(i))
-		midi.addNote(track,channel,ord(i)-10,time, duration, volume);
-		time += 1
+		midi.addNote(track,channel,ord(sentence[i]),time, duration, volume+ord(sentence[i]));
+		time += .25
+		i+=1
 	with open(filename,"wb") as output_file:
 		midi.writeFile(output_file);
 	print("success")
